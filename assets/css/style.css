@@ -1,7 +1,11 @@
 body {
-  margin: 0;
-  padding: 0;
   font-family: poppins;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
@@ -23,19 +27,6 @@ header {
   height: 60px;
   margin-right: 10px;
 }
-
-/* Style the tab */
-/* .tabmenu {
-  display: flex;
-  width: 100%;
-  margin: auto;
-  margin-top: 20px;
-  padding: 10px;
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  border-radius: 10px;
-} */
 
 /* Style the buttons that are used to open the tab content */
 .tabmenu button {
@@ -66,11 +57,6 @@ header {
   border-top: none;
 }
 
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .container {
   width: 80%;
   border: 2px solid black;
