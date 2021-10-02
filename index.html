@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,59 +10,97 @@
     <script src="./assets/js/search-panel.js"></script>
     <script src="./assets/js/search-results-panel.js"></script>
     <script src="./assets/js/favourites-panel.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
     <title>Connectivity</title>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <header>
-      <!-- Title -->
-      <h1>Movie and Book Database</h1>
+        <!-- Title -->
+        <h1>Movie and Book Database</h1>
 
-      <!-- Logo -->
-      <a href="#" class="logo">
-        <img src="./assets/css/images/logo.png" />
-      </a>
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <img src="./assets/images/logo.png" />
+        </a>
 
-      <!-- Tab links -->
-      <div class="tabmenu">
-        <button class="tablinks" onclick="openCategorie(event, 'BestSellingBooks')">
-          Best Selling Books
-        </button>
-        <button class="tablinks" onclick="openCategorie(event, 'TopRatedMovies')">
-          Top Rated Movies
-        </button>
-        <button class="tablinks" onclick="openCategorie(event, 'Favourites')">
-          Favourites
-        </button>
-      </div>
+        <!-- Tab links -->
+        <div class="tabmenu">
+            <button class="tablinks" onclick="openCategorie(event, 'topBooks')">
+                Best Selling Books
+            </button>
+            <button class="tablinks" onclick="openCategorie(event, 'topMovies')">
+                Top Rated Movies
+            </button>
+            <button class="tablinks" onclick="openCategorie(event, 'favourites')">
+                Favourites
+            </button>
+        </div>
     </header>
 
 
-
-      <div class="container">
+    <!--Home page div-->
+    <div class="container">
         <h1>Search by Title</h1>
         <div class="search_box">
-          <input
-            type="text"
-            class="input_search"
-            placeholder="What are you looking for?"
-          />
-          <button type="button" id="search-btn">Search</button>
-           <p id="infoStatus"></p>
+          
+       
+            <input type="text" class="input_search" id="search" placeholder="What are you looking for?" />
+            <button type="button" id="search-btn">Search</button>
+             <button type="button" id="critics-btn">Critics</button>
+            <p id="infoStatus"></p>
         </div>
+
 
         <form action="search_checkbox">
           <input type="checkbox" id="Books" value="Books" />
           <label for="Books">Books</label><br />
           <input type="checkbox" id="Movies" value="Car" />
           <label for="Movies">Movies</label><br /><br />
+            
         </form>
-      </div>
+
+
+        <div id="bookResults">
+
+
+
+        </div>
+
+        <div id="topBookResults">
+            
+
+
+        </div>
+
+
+        <div id="movieResults">
+            <!-- Mariane's movie results go here -->
+        </div>
+
+    </div>
+
+    <!--Top Seller Books div-->
+    <div>
+
+    </div>
+
+    <!--Top Movies div-->
+    <div id ="critics-pick">
+
+    </div>
+
+    <!--Favourites div-->
+    <div>
+
+    </div>
+
+
+
     </main>
-  </body>
+</body>
+
 </html>
