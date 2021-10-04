@@ -66,3 +66,7 @@ header {
   background-color: white;
   border-radius: 10px;
 }
+div#bookResults, div#topBookResults, div#movieResults {
+    margin-bottom: 50px;
+}
+

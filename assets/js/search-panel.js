@@ -16,7 +16,7 @@ function getCheckBoxMovies() {
 
 //function to get checkbox value Books
 function getCheckBoxBooks() {
-  $("#Books").click(function () {
+  $("#Books").change(function () {
     return $(this).prop("checked");
   });
 }
@@ -24,17 +24,23 @@ function getCheckBoxBooks() {
 $(function () {
   $("#search-btn").on("click", showSearchResultsPanel, function (event) {
     event.preventDefault();
+    $("#movieResults").html("");
+    $("#bookResults").html("");
     //search only by movie
-    if (getCheckBoxMovies() == true) {
+    if ($("#Movies").is(":checked") && !$("#Books").is(":checked")) {
       getMoviesByParam();
     } //search only by book
-    else if (getCheckBoxBooks() == true) {
+    else if ($("#Books").is(":checked") && !$("#Movies").is(":checked")) {
+      var authorName = getSearchParam();
+      var userChoicebyTitle = authorName;
       getUserChoicebyAuthor(authorName);
       getUserChoiceByTitle(userChoicebyTitle);
     }
     //search all
     else {
       getMoviesByParam();
+      var authorName = getSearchParam();
+      var userChoicebyTitle = authorName;
       getUserChoicebyAuthor(authorName);
       getUserChoiceByTitle(userChoicebyTitle);
     }
@@ -72,6 +78,7 @@ function getMoviesPicks() {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          renderMoviesCriticsResult(data);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -91,6 +98,7 @@ function getMoviesByParam() {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          renderMoviesResult(data);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -101,9 +109,57 @@ function getMoviesByParam() {
     });
 }
 
+function renderMoviesResult(queryRes) {
+  $("#movieResults").html("");
+  var innerHTML = '<p class="title is-3">Search Results: Movies</p>';
+  queryRes.results.forEach((result) => {
+    innerHTML += renderMovieResultTemplate(result);
+  });
+  $("#movieResults").html(innerHTML);
+}
+function renderMoviesCriticsResult(queryRes) {
+  $("#movieResults").html("");
+  $("#bookResults").html("");
+  var innerHTML = '<p class="title is-3">Search Results: Movies (Critics)</p>';
+  queryRes.results.forEach((result) => {
+    innerHTML += renderMovieResultTemplate(result);
+  });
+  $("#movieResults").html(innerHTML);
+}
+
+// Function to display books by an author or title
+
+function renderMovieResultTemplate(result) {
+  console.log(result.multimedia);
+  return `
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="" alt="">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">${result.display_title}
+          <small style="font-size: 12px"><br>Review By: ${result.byline}</small></p>
+          <p class="subtitle is-6">${result.headline}</p>
+        </div>
+      </div>
+      <div class="content">
+      ${result.summary_short}
+        <br>
+        <time datetime>Publication Date: ${result.publication_date}</time>
+      </div>
+    </div>
+  </div>`;
+}
+
 // Function to get Books data
 
 function getTopSellers() {
+  $("#movieResults").html("");
+  $("#bookResults").html("");
   var topSellerBooksUrl = new URL(
     "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=C1TDrksFmBX6rwRPyWGH6t6yIkYDeYxq"
   );
@@ -129,7 +185,7 @@ function getTopSellers() {
 // Function to get book details by user's choice of title
 
 function getUserChoiceByTitle(userChoicebyTitle) {
-  console.log(userChoicebyTitle +" step1");
+  console.log(userChoicebyTitle + " step1");
   var searchByTitleUrl = new URL(
     "https://api.nytimes.com/svc/books/v3/reviews.json?title=" +
       userChoicebyTitle +
@@ -142,7 +198,6 @@ function getUserChoiceByTitle(userChoicebyTitle) {
 // Function to get user choice  by author's name
 
 function getUserChoicebyAuthor(authorName) {
-
   var searchByAuthorUrl = new URL(
     "https://api.nytimes.com/svc/books/v3/reviews.json?author=" +
       authorName +
@@ -176,21 +231,19 @@ function getBookDetails(searchURL) {
 
 // Display results for the user's choice of book by title
 
-
 function renderBookResult(queryRes) {
   $("#bookResults").html("");
-  var innerHTML = "";
+  var innerHTML = '<p class="title is-3">Search Results: Books</p>';
   queryRes.results.forEach((result) => {
     innerHTML += renderBookResultTemplate(result);
   });
   $("#bookResults").html(innerHTML);
 }
 
-
 // Function to display books by an author or title
 
-function renderBookResultTemplate(result){
-   return `
+function renderBookResultTemplate(result) {
+  return `
   <div class="card">
     <div class="card-content">
       <div class="media">
@@ -213,22 +266,20 @@ function renderBookResultTemplate(result){
   </div>`;
 }
 
-
 /*  getTopSellers();  */
 
 // Function to display top five books
 
-function renderTopSellers(queryRes){
+function renderTopSellers(queryRes) {
   $("#topBookResults").html("");
   var innerHTML = "";
- queryRes.slice(0,5).forEach(result => {
-   innerHTML += renderTopFiveBookResultTemplate(result);
- });
- $("#topBookResults").html(innerHTML);
+  queryRes.slice(0, 5).forEach((result) => {
+    innerHTML += renderTopFiveBookResultTemplate(result);
+  });
+  $("#topBookResults").html(innerHTML);
 }
 
-
-function renderTopFiveBookResultTemplate(result){
+function renderTopFiveBookResultTemplate(result) {
   return `<article class="media">
   <figure class="media-left">
     <p class="image is-64x64">
@@ -248,7 +299,8 @@ function renderTopFiveBookResultTemplate(result){
   <div class="media-right">
     <button class="is-danger">&#x2764;</button>
   </div>
-</article>`}
+</article>`;
+}
 
 //Monitors the checkboxes values
 $(document).ready(getCheckBoxMovies);

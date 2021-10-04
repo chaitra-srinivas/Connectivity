@@ -29,7 +29,7 @@
 
         <!-- Tab links -->
         <div class="tabmenu">
-            <button class="tablinks" onclick="openCategorie(event, 'topBooks')">
+            <button class="tablinks" onclick="getTopSellers()">
                 Best Selling Books
             </button>
             <button class="tablinks" onclick="openCategorie(event, 'topMovies')">
@@ -44,7 +44,7 @@
 
     <!--Home page div-->
     <div class="container">
-        <h1>Search by Title</h1>
+        <h1 id="search_type">Search by Title</h1>
         <div class="search_box">
           
        
@@ -58,9 +58,8 @@
         <form action="search_checkbox">
           <input type="checkbox" id="Books" value="Books" />
           <label for="Books">Books</label><br />
-          <input type="checkbox" id="Movies" value="Car" />
-          <label for="Movies">Movies</label><br /><br />
-            
+          <input type="checkbox" id="Movies" value="Movies" />
+          <label for="Movies">Movies</label><br /><br />            
         </form>
 
 
