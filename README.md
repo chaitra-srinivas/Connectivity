@@ -20,4 +20,4 @@ Screen shots:
 ![Favourites](./assets/images/favourites.png)
 
 
-![The Entertainment Hub]: https://chaitra-srinivas.github.io/The-Entertainment-Hub/
+[a link]: https://chaitra-srinivas.github.io/The-Entertainment-Hub/
