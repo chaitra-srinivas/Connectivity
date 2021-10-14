@@ -185,7 +185,7 @@ function renderMovieResult(queryRes, contentElementSelector) {
 //displays movie results
 function renderMovieResultTemplate(result, image) {
   return `
-<div class="container column is-three-quarters-mobile px-3 py-3">
+<div class="container column px-3 py-3">
   <div class="card-image">
     <figure class="image is-4by3">
     <img onerror="this.src='./assets/images/no-image.jpg';this.onerror='';" src="${image.src}" alt="${result.display_title}">

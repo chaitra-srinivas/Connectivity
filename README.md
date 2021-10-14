@@ -14,11 +14,10 @@ The application is built using HTML5, CSS, JavaScript, jQuery and Bulma(CSS libr
 
 
 Screen shots:
-1. ![Home page](./assets/images/main-page.png)
-2. ![Best Sellers](./assets/images/Best-sellers.png)
-3. ![Critics' Picks](./assets/images/critics-picks.png)
-4. ![Favourites](./assets/images/favourites.png)
+![Home page](./assets/images/main-page.png)
+![Best Sellers](./assets/images/Best-sellers.png)
+![Critics' Picks](./assets/images/critics-picks.png)
+![Favourites](./assets/images/favourites.png)
 
 
-1. ![Deployed application]: https://chaitra-srinivas.github.io/The-Entertainment-Hub/
-2. ![Github link]: https://github.com/chaitra-srinivas/The-Entertainment-Hub/
+![The Entertainment Hub]: https://chaitra-srinivas.github.io/The-Entertainment-Hub/
