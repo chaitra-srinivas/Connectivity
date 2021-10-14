@@ -1,4 +1,4 @@
-# The Entertainment Hub
+# [The Entertainment Hub](https://chaitra-srinivas.github.io/The-Entertainment-Hub/)
 # Overview
 
 The Entertainment Hub is a web application that provides information about the current New York Times Best Sellers List, book and movie reviews and a list of critically acclaimed movies. A user can look up for a particular book or movie by title/author. 
@@ -19,5 +19,3 @@ Screen shots:
 ![Critics' Picks](./assets/images/critics-picks.png)
 ![Favourites](./assets/images/favourites.png)
 
-
-[a link](https://chaitra-srinivas.github.io/The-Entertainment-Hub/)
